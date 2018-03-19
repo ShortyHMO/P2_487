@@ -18,8 +18,9 @@ void modifyIV(string cIV)
 void modifyKey(string cKey)
 //modify
 round function()
-keySchedule()
+vector <int> keySchedule(vector <int> key)
 cbc()// cipeher -block chaining
 permutation();
+String FC(String PlainText)
 */
 
