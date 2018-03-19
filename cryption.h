@@ -12,12 +12,12 @@ Pbox
 cryption()
 
 // get
-String c(int n, string filename)
+String roundFunctions(int n, string filename)
 // set
 void modifyIV(string cIV)
 void modifyKey(string cKey)
 //modify
-round function()
+
 vector <int> keySchedule(vector <int> key)
 cbc()// cipeher -block chaining
 permutation();
