@@ -7,7 +7,7 @@ cryption(){
 }
 
 // get function
-String c(int n, string filename){
+String roundFunction(int n, string filename){
 switch(n) {
     case 0:
     break;
