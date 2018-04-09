@@ -39,7 +39,7 @@ char crypt;
 char answer;
 char tOrF;
 int f;
-cryption crp;
+
 cbc encode;
 
 /*
@@ -108,7 +108,8 @@ cin >> programName;
 	
 	if(crypt == 'd') f=0;
 	else f=1;
-	Text = crp.roundFunction(f, Text, key, programName);
+	cyrption crp(key);
+	Text = crp.roundFunction(f, Text, programName);
 	encode.cbcIV(key, start);
 	
 cout << 
