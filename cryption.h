@@ -12,7 +12,7 @@ Pbox
 cryption()
 
 // get
-String roundFunctions(int n, string filename)
+String roundFunctions(int n,string Text, string Key ,string filename)
 // set
 void modifyIV(string cIV)
 void modifyKey(string cKey)

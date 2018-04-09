@@ -1,4 +1,4 @@
-// main
+//main.cpp
 /*
 break down so far
 operation
@@ -15,82 +15,103 @@ modifyIV(string), modifyKey(string), c(int,string);
 
 // Libraries
 #include <iostream>
-
-
-
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <ctype.h>
+#include <stdio.h>
+#include "cryption.h"
+#include "cbc.h"
 
 using namespace std;
 
-//main
 int main(){
 
+// variables
+string Text;
+string programName;
+ifstream fFile;
+stringstream a;
+string x;
+string key;
+string start;
+char crypt;
+char answer;
+char tOrF;
+int f;
+cryption crp;
+cbc encode;
+
 /*
-The first part will be getting user input
+the first part will be getting user input
 decryption or encryption
-cipertext  or  plaintext
-IV
+ciphertext or plaintext
+IV 
 Key
 */
 
-string Text;
-string cryption;
-int start;
-int Key;
-string answer;
-string programName;
+cout << "Program 2: Data Encryption Standard Replication." << "\n";
+cout << "Would you like to encrypt(e) or decrypt(d)? (type the letter)"<<"\n";
+cin >> crypt;
+crypt = towlower(crypt);
+if(crypt != 'd'&& crypt != 'e'){
+cerr << "Your input is invalid it must be 'd' or 'e' anything else will end the program."<<"\n"<<"Have a good day."<<"\n";
+exit(1);
+}
+cout << "Is this using cbc for key authenticiation? Yes(y) or No(n) please use letter"<<"\n";
+cin >> tOrF;
+tOrF = towlower(tOrF);
+if(tOrF != 'y'&& tOrF != 'n'){
+cerr << "Your input is invalid it must be 'n' or 'y' anything else will end the program."<<"\n"<<"Have a good day."<<"\n";
+exit(1);
+}
+cout << "would you like to use a file for your ";
+if(crypt == 'y')
+cout << "Plain text?" <<"\n";
+else
+cout << "cipher text?  yes(y) or no(n) please type letter" <<"\n";
+cin >> answer;
+answer = towlower(answer);
+if(answer != 'y'&& answer != 'n'){
+cerr << "Your input is invalid it must be 'n' or 'y' anything else will end the program."<<"\n"<<"Have a good day."<<"\n";
+exit(1);
+}
+if (answer == 'y'){
+	cout << "Please enter the file name with .txt extension."<<"(file must be in program file to work)"<<"\n";
+	cin >> programName;
+	fFile.open(programName);
+	  if(!fFile){
+		cerr <<"File " << programName << " was not found." << "\n";
+		exit(1);
+	   }
+	   while(fFile >> x){
+	      a << x;
+	   }
+	   Text = a.str();
+	
+}
+else{
+	cout << "Please enter the text" <<"\n";
+	cin >>Text;
+}
+if(tOrF == 'y'){
+	
+	cout << "Please put in your Hexidecimal 8 bit code (with no spaces) for your IV."<<"\n";
+	cin >> start;
+} 
 
-//consol output and inputs
+cout << "Please put in your Hexidecimal 56 bit key (with no spaces)" << "\n";
+cin >> key;
 
-cout << "Program 2: Data Encrytion Standard replicaiton"<< "\n";
-cout << "would you like to encrypt(e) or decyrpt(d)? (please type letter or word)<<"\n""
-cin >> cyrption;
-cryption = tolower(cryption);
-switch(cryption)
-	case "d": case "decrypt":
-	cout << "Would you like to uploade a file?"<<"\n";
-	cin >> answer;	
-	answer = tolower(answer);
-	if( answer == "y" || answer == "yes"){
-	  cout << "Please type in document name.\n(file must be located within the program folder)" << "\n";
-	  cin >> programName;
-	}
-	else{
-	  cout <<"Please type in your ciphertext."<<"\n";
-	  cin Text;
-	}		
-	cout << "would you like to use your own key? Y or N" <<"\n";
-	cin << answer;
-	answer = tolower(answer);
-	if( answer == "y" || answer == "yes"){
-	  cout << "Please enter key." << "\n";
-	  cin >> key;
-	}	
-	cout >> "would you like to use cbc? Y or N"<<"\n";
-	cin << answer;
-	answer = tolower(answer);
-	if( answer == "y" || answer == "yes"){	
-		cout >> "Please type in your IV."<<"\n";
-		cin <<  start;
-	}
-	case e:case encrypt:
-	cout >> "Please type in your text for encryption."<<"\n";	
-	cin >> text;
-	cout << "would you like to use cbc?"<<"\n";
-	cin  >> answer;
-	answer = tolower(answer);
-	if (answer == "y" || answer "yes"){
-		cout <<"Will this be used of openssl des-cbc?"
-	}
+cout << "What would you like your output file named?"<<"\n";
+cin >> programName;
+	
+	if(crypt == 'd') f=0;
+	else f=1;
+	Text = crp.roundFunction(f, Text, key, programName);
+	encode.cbcIV(key, start);
+	
+cout << 
+return 0;
 
-cin >>key;
-cin >> IV;
-
-
-
-
-
-
-
-
-}// end of main
-
+}//end of main

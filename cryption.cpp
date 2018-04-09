@@ -7,7 +7,8 @@ cryption(){
 }
 
 // get function
-String roundFunction(int n, string filename){
+String roundFunction(int n,string Text, string Key ,string filename){
+ ki = kofi(key);
 switch(n) {
     case 0:
     break;
